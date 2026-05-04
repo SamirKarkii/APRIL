@@ -342,9 +342,30 @@
 #       last_index = index
 # print(last_index)
 
-a = [1,2,3,4,5]
-for i in a: 
-    if i>i+1:
-        print("Not ascending")
-else: 
-    print(f'{a} is in ascendign order')
+# a = [1,2,3,4,5]
+# for i in a: 
+#     if i>i+1:
+#         print("Not ascending")
+# else: 
+#     print(f'{a} is in ascendign order')
+
+
+
+#count number greate than average
+
+a = [1,2,3,4,5,6]
+# sum = 0
+# for i in a: 
+#     sum = sum+i
+
+# average = sum/len(a)
+# count = 0
+# for i in a: 
+#     if i>average:
+#         count = count +1
+# print(count)
+
+
+# Find the second largest number in a list
+
+a

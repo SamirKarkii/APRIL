@@ -368,4 +368,18 @@ a = [1,2,3,4,5,6]
 
 # Find the second largest number in a list
 
-a
+# a = [10,200,300,40,50]
+# largest = float('-int')
+# second_largest = float('-int')
+# for i in a: 
+#     if i>largest:
+#         second_largest = largest
+#         largest = i
+#     elif i>second_largest and i!=largest: 
+#         second_largest = i
+# print(largest)
+# print(second_largest)
+
+a =[1,2,3,4]
+for i in a: 
+    print(reversed(i))

@@ -379,7 +379,46 @@ a = [1,2,3,4,5,6]
 #         second_largest = i
 # print(largest)
 # print(second_largest)
+ 
 
-a =[1,2,3,4]
-for i in a: 
-    print(reversed(i))
+#  #reverse a list 
+# user = [1,2,3,4,5]
+# for item in reversed(user):
+#     print(item)
+# reversed_list = list(reversed(user))
+# print(reversed_list)
+
+
+# user = [1,2,3,4,5]
+# reversed_list =[]
+# for item in reversed(user):
+#     reversed_list.append(item)
+# print(reversed_list)
+
+
+#Make a new list where each element = square of original 
+
+# a = [1,2,3]
+# square = []
+# for i in a: 
+#     square.append(i*i)
+# print(square)
+
+# 3. Filter Even Numbers
+# 👉 Create a new list containing only even numbers
+# [1,2,3,4,5] → [2,4]
+# a = [1,2,3,4,5]
+# b =[]
+# for item in a: 
+#     if item%2==0:
+#         b.append(item)
+# print(b)
+
+a = [10,20,30,40,50]
+b = []
+start = len(a)-1
+for i in range(start,-1,-1):
+    # print([a[i]], end="")
+    b.append(a[i])
+print(b)
+

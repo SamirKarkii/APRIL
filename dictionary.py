@@ -79,4 +79,67 @@
 # print(users["user1"]["age"])
 
 #2)Dictionary Comprehension
-#Just like List Co
+#Just like List Comprehsion , this is a "one-liner " way to create dictionaries . 
+#Syntx : {key:value for item in iterable }
+
+# a = {x:x+1 for x  in range(1,10)}
+# print(a)
+
+
+# company = {
+#     "emp1": {"name": "Alice", "location": "New York"},
+#     "emp2": {"name": "Bob", "location": "London"}
+# }
+# print(company["emp2"]["location"])
+
+# 2. The Transformer
+# I have a list of names: names = ["Apple", "Banana", "Cherry"].
+# Use Dictionary Comprehension to create a dictionary where the key is the name and the value is the length of that name.
+# (Hint: Use the len() function).
+
+#Dictionary comprehension looks a bit intimidating at first because it packs a lot inoto one line. 
+#Instead of writing 4 lines of code, we write 1.
+
+# name = ["Apple","Banana"]
+# name_length = {}
+# for i in name:
+#     name_length[i] = len(i)
+# print(name_length)
+
+# #Comprehensive Style: 
+# name = ["Apple", "Banana"]
+# name_length = {x:len(x) for x in name}
+# print(name_length)
+
+# nums = [1,2,3]
+# num_sum = {x:x+10 for x in nums}
+# print(num_sum)
+
+# names = ["Python", "Java", "C"]
+# programmin_languages = {x:"langu"age" for x in names}
+# print(programmin_languages)
+
+# company = {
+#     "emp1":{"name":"Alice","location":"NewYork"}, 
+#     "emp2":{"name":"Bob","location":"London"}
+# }
+# print(company["emp2"]["location"])
+
+# 2. The Membership Check
+# If you want to see if a key exists in a dictionary (to avoid errors), Python has a very "English-like" keyword for it.
+# Fill in the blank:
+# Python
+# product = {"name": "Laptop", "price": 999}
+# for i in product.keys():
+#     if "price" == i:
+#         print("Price is available")
+
+# product = {"name":"Laptop", "price":99}
+# if "price" in product: 
+#     print("Available ")
+
+#Union Operator in python 
+dict1 = {"apple":1, "ball":2}
+dict2 = {"mango":7, "bat":2}
+merge = dict1|dict2
+print(merge)

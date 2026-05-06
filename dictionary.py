@@ -139,7 +139,61 @@
 #     print("Available ")
 
 #Union Operator in python 
-dict1 = {"apple":1, "ball":2}
-dict2 = {"mango":7, "bat":2}
-merge = dict1|dict2
-print(merge)
+# dict1 = {"apple":1, "ball":2}
+# dict2 = {"mango":7, "bat":2}
+# merge = dict1|dict2
+# print(merge)
+
+d = {"a": 10, "b": 20}
+d["b"] = 100
+print(d) 
+
+#2. The Ghost Key
+#How do you check if the key "email" exists in a dictionary called user_profile? (Use the "English-like" keyword).
+user_profile = {"name":"Samir Karki", "email":""}
+if "email" in user_profile: 
+    print("exist")
+
+#3. The Safeway
+#Use the .get() method to look for a key called "phone" in user_profile.
+#  If it's not there, make it return the string "Not Found"
+
+#4. The Loop (Keys Only)
+#Write a for loop that prints only the keys of the dictionary stock = {"Apple": 50, "Orange": 30}.
+stock = {"Apple": 50, "Orange": 30}
+for i,j in stock.items():
+    print(i)
+    
+stock = {"Apple": 50, "Orange": 30}
+for i,j in stock.items():
+    print(j) 
+
+
+#6. Adding on the Fly
+#You have colors = {"red": "#FF0000"}. Write one line to add "blue" with the value "#0000FF".
+colors = {"red": "#FF0000"}
+colors["blue"]="#0000FF"
+print(colors)
+
+#7. The Counter (Logic)
+#If points = {"player1": 5}, how do you add 10 more points to player1 so their new total is 15?
+points = {"player1":5}
+points["player1"] +=10
+print(points)
+
+#8. The Dictionary Factory (Comprehension)
+#Use dictionary comprehension to create a dictionary where the keys are numbers 1, 2, 3 and the values are those numbers 
+#multiplied by 10 (e.g., {1: 10, 2: 20...}).
+a =[1,2,3,4,5,6]
+b = {x:x*10 for x in a}
+print(b)
+
+#9. The Deep Dive (Nesting)
+#Given: data = {"users": {"id_1": "Alice", "id_2": "Bob"}}. Write the code to print the name "Bob".
+data = {"users": {"id_1": "Alice", "id_2": "Bob"}}
+d=data["users"]["id_2"]
+print(d)
+
+#10. The Big Cleanup
+#What is the difference between del my_dict["key"] and my_dict.clear()?
+#del will delete a particular give key  while clear removes everything

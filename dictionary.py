@@ -197,3 +197,13 @@ print(d)
 #10. The Big Cleanup
 #What is the difference between del my_dict["key"] and my_dict.clear()?
 #del will delete a particular give key  while clear removes everything
+
+#Update 
+profile = {"name": "Samir", "age": 25}
+new_data = {"age": 26, "city": "Kathmandu"}
+
+profile.update(new_data)
+print(profile)
+
+
+

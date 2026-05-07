@@ -414,11 +414,75 @@ a = [1,2,3,4,5,6]
 #         b.append(item)
 # print(b)
 
-a = [10,20,30,40,50]
-b = []
-start = len(a)-1
-for i in range(start,-1,-1):
-    # print([a[i]], end="")
-    b.append(a[i])
-print(b)
+# a = [10,20,30,40,50]
+# b = []
+# start = len(a)-1
+# for i in range(start,-1,-1):
+#     # print([a[i]], end="")
+#     b.append(a[i])
+# print(b)
 
+
+# a = [1,2,2,3,4,5]
+# b = list(set(a))
+# print(b)
+
+# original_list = [1,2,2,3,4,4,5,1]
+# unique_list =[]
+
+# for item in original_list:
+#     if item not in unique_list:
+#         unique_list.append(item)
+# print(unique_list)
+
+# a = [1,2]
+# b = [3,4]
+# c =[]
+# for i in a:
+#     c.append(i)
+# for j in b: 
+#     c.append(j)
+
+# print(c)
+
+# a = [1,2,3]
+# b= [2,3,4]
+# c=[]
+# for i in a: 
+#     for j in b: 
+#         if i == j: 
+#             c.append(i)
+# print(c)
+
+# a =[1,2,3,3,4]
+# b=[]
+# for i in a: 
+#     if i not in b: 
+#         b.append(i)
+# print(b)
+
+
+#two chucks left out of 5, we will get throug it taking dic and func aligned 
+# 🚀 Remaining Chunks
+# 🔥 Chunk 4 — Intermediate Patterns
+
+# Focus:
+
+# Two pointers (intro)
+# Pair sum
+# Moving zeros
+# Rotations
+# Subarray basics
+
+# 👉 This is where problems start feeling “interview-like”
+
+# 🔥 Chunk 5 — Mixed + Slightly Tricky
+
+# Focus:
+
+# Combining multiple concepts
+# Optimization thinking
+# Edge cases
+# More reasoning-heavy questions
+
+# 👉 This chunk pushes you toward intermediate

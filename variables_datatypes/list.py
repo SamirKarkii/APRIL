@@ -462,7 +462,7 @@ a = [1,2,3,4,5,6]
 # print(b)
 
 
-#two chucks left out of 5, we will get throug it taking dic and func aligned 
+#two chucks left out of 5 of list, we will get throug it taking dic and func aligned 
 # 🚀 Remaining Chunks
 # 🔥 Chunk 4 — Intermediate Patterns
 

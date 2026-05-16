@@ -164,9 +164,72 @@
 # greet()
 # greet("Sam")
 
-def profile(name,country="Nepal"):
-    print("Name:", name)
-    print("Country:",country)
 
-profile("Sam")
-profile("sam", "georgia") #ohh it even overrides great 
+#Return value
+#This is a massive topic , beginner often think print() and return are similar but they are not 
+
+#Difference between print and return value
+#print only display output doensnot sent a value back 
+
+#return sends balue back to the caller , allows storing and reusing results 
+
+# def add_with_print(a,b):
+#     result = a+b
+#     print(result)
+
+# my_total = add_with_print(2,3)
+
+# final_step =  my_total*10 #this will throw error 
+
+# def add_with_return(a,b):
+#     result = a+b
+#     return result
+
+# my_total = add_with_return(3,4)
+# print(my_total+10)
+
+
+def multiply(a,b):
+    return a*b
+
+result = multiply(2,3)
+print(result)
+
+
+def fullname(first,last):
+    name = first+last
+    return name
+
+apple = fullname("samir","borther")
+print(apple)
+print(apple+"arc")
+
+
+def cube(n):
+    return n**3
+total = cube(3)
+print(total)
+
+def login(username, password):
+    if username=="admin" and password =="1234":
+        return "Login sussc"
+    else:
+        return "Invalid "
+
+creditiantles = login("admin","1234")
+print(creditiantles)
+
+# Difference between print() and return?
+#print bascically is for displaying , while return actually allows to store and resuse restly
+
+
+# What does return do?
+#retuns sends back the value to caller and it immediately shuts downs the function
+# What is None?
+#when we use print the return value is none, as the variable just displaly the value not hold it , its like nothing
+# Does code run after return?
+#NO the code mmediately stops 
+# Why is return more powerful than print()?
+#because it allows to store and reuse 
+# What happens if function has no return?
+#it give none

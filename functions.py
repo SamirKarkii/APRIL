@@ -189,35 +189,35 @@
 # print(my_total+10)
 
 
-def multiply(a,b):
-    return a*b
+# def multiply(a,b):
+#     return a*b
 
-result = multiply(2,3)
-print(result)
-
-
-def fullname(first,last):
-    name = first+last
-    return name
-
-apple = fullname("samir","borther")
-print(apple)
-print(apple+"arc")
+# result = multiply(2,3)
+# print(result)
 
 
-def cube(n):
-    return n**3
-total = cube(3)
-print(total)
+# def fullname(first,last):
+#     name = first+last
+#     return name
 
-def login(username, password):
-    if username=="admin" and password =="1234":
-        return "Login sussc"
-    else:
-        return "Invalid "
+# apple = fullname("samir","borther")
+# print(apple)
+# print(apple+"arc")
 
-creditiantles = login("admin","1234")
-print(creditiantles)
+
+# def cube(n):
+#     return n**3
+# total = cube(3)
+# print(total)
+
+# def login(username, password):
+#     if username=="admin" and password =="1234":
+#         return "Login sussc"
+#     else:
+#         return "Invalid "
+
+# creditiantles = login("admin","1234")
+# print(creditiantles)
 
 # Difference between print() and return?
 #print bascically is for displaying , while return actually allows to store and resuse restly
@@ -233,3 +233,60 @@ print(creditiantles)
 #because it allows to store and reuse 
 # What happens if function has no return?
 #it give none
+
+
+#Topic 5- Scope 
+#this topic explians : 
+#Scope is the region where a variable can be accessed or used.
+#Local Scope 
+#Global Scope
+
+#Local Variables 
+#a variable inside a function
+# def test():
+#     x=10
+#     print(x)
+# test() #basically x only exists inside tes 
+# print(x) #Throws name error, because local variable dies after functions ends
+
+#Global variable 
+# name = "Sam"
+# def show():
+#     print(name)
+
+# show() #global variable can be accessed inside function.
+
+
+#combining both
+
+# x =100
+# def test():
+#     x =50
+#     print(x)
+# test()
+# print(x)
+
+
+# Task one
+def test():
+    x=50
+    print(x)
+
+# print(x) #name error because local variable dies after func ends
+
+#task two
+
+country = "Nepal"
+def show_country():
+    print(country)
+show_country()
+
+#task 3
+score =100
+def match():
+    score = 50
+    print(score)
+
+match() #rhis prints local variable 
+
+

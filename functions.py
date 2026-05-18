@@ -276,17 +276,82 @@ def test():
 
 #task two
 
-country = "Nepal"
-def show_country():
-    print(country)
-show_country()
+# country = "Nepal"
+# def show_country():
+#     print(country)
+# show_country()
 
-#task 3
-score =100
-def match():
-    score = 50
-    print(score)
+# #task 3
+# score =100
+# def match():
+#     score = 50
+#     print(score)
 
-match() #rhis prints local variable 
+# match() #this prints local variable 
 
 
+#*args basically allows a function to accept any number of positonal argument . 
+#*args collects multiple positional arguments into a tuple 
+
+# def number(*args):
+#     print(args)
+
+# number(2,3,4,4,5)
+
+def show(*agrs):
+    for item in agrs: 
+        print(item)
+
+show("apple", "ball", "football")
+
+#Real example sum of number 
+def total(*args):
+    sum = 0
+    for i in args: 
+        sum = sum+i
+    return sum
+
+print(total(2,3,4,5))
+
+#Mixing normal parameters + *args 
+
+def profile(name,*args):  #normal parameter comes first 
+    print(name)
+    print(args)
+
+profile("Sam","Python", "Djanog", "Docker", "Postgres")
+
+
+
+#Task one:
+def friends(*args):
+    print(args)
+friends("Sam","Ram","Harry")
+friends("Sam","Ram","Harry","alex", "ramhari")
+
+#Task Two : 
+def multiply(*numbers):
+    mul = 1
+    for i in numbers:
+        mul = mul*i
+    print(mul)
+
+multiply(2,3,4)
+
+#Task three:
+def student(name, *marks): 
+    print(name)
+    print(marks)
+
+student("Alex", 10,20,30,40,50)
+
+#Task 4 
+def highest(*nums):
+    return max(nums)
+print(highest(2,3,4))
+
+#Task 5: 
+def info(valur,*data):
+    for i in data:
+        print(i,valur)
+info("$",1,2,3,4,5,)

@@ -267,91 +267,156 @@
 # print(x)
 
 
-# Task one
-def test():
-    x=50
-    print(x)
+# # Task one
+# def test():
+#     x=50
+#     print(x)
 
-# print(x) #name error because local variable dies after func ends
+# # print(x) #name error because local variable dies after func ends
 
-#task two
+# #task two
 
-# country = "Nepal"
-# def show_country():
-#     print(country)
-# show_country()
+# # country = "Nepal"
+# # def show_country():
+# #     print(country)
+# # show_country()
 
-# #task 3
-# score =100
-# def match():
-#     score = 50
-#     print(score)
+# # #task 3
+# # score =100
+# # def match():
+# #     score = 50
+# #     print(score)
 
-# match() #this prints local variable 
+# # match() #this prints local variable 
 
 
-#*args basically allows a function to accept any number of positonal argument . 
-#*args collects multiple positional arguments into a tuple 
+# #*args basically allows a function to accept any number of positonal argument . 
+# #*args collects multiple positional arguments into a tuple 
 
-# def number(*args):
+# # def number(*args):
+# #     print(args)
+
+# # number(2,3,4,4,5)
+
+# def show(*agrs):
+#     for item in agrs: 
+#         print(item)
+
+# show("apple", "ball", "football")
+
+# #Real example sum of number 
+# def total(*args):
+#     sum = 0
+#     for i in args: 
+#         sum = sum+i
+#     return sum
+
+# print(total(2,3,4,5))
+
+# #Mixing normal parameters + *args 
+
+# def profile(name,*args):  #normal parameter comes first 
+#     print(name)
 #     print(args)
 
-# number(2,3,4,4,5)
+# profile("Sam","Python", "Djanog", "Docker", "Postgres")
 
-def show(*agrs):
-    for item in agrs: 
-        print(item)
 
-show("apple", "ball", "football")
 
-#Real example sum of number 
-def total(*args):
-    sum = 0
-    for i in args: 
-        sum = sum+i
-    return sum
+# #Task one:
+# def friends(*args):
+#     print(args)
+# friends("Sam","Ram","Harry")
+# friends("Sam","Ram","Harry","alex", "ramhari")
 
-print(total(2,3,4,5))
+# #Task Two : 
+# def multiply(*numbers):
+#     mul = 1
+#     for i in numbers:
+#         mul = mul*i
+#     print(mul)
 
-#Mixing normal parameters + *args 
+# multiply(2,3,4)
 
-def profile(name,*args):  #normal parameter comes first 
+# #Task three:
+# def student(name, *marks): 
+#     print(name)
+#     print(marks)
+
+# student("Alex", 10,20,30,40,50)
+
+# #Task 4 
+# def highest(*nums):
+#     return max(nums)
+# print(highest(2,3,4))
+
+# #Task 5: 
+# def info(valur,*data):
+#     for i in data:
+#         print(i,valur)
+# info("$",1,2,3,4,5,)
+
+
+#**kwargs 
+# **kwargs collects multiple keyword arguments into a dictionary 
+
+def info(**kwargs): 
+    print(kwargs)  #inside a function **kwargs becomes a dictonary, key--> vlaue pairs 
+
+info(name="samir", age= "19", gender= "male") 
+
+#loopng through, kwargs
+
+def loopexample(**kwargs): 
+    for key,value in kwargs.items(): 
+        print(key, "=", value)
+
+loopexample(name="samir", age="19", gender= "male")
+
+#normal parameter +  **kwargs 
+def student(name, **details): 
     print(name)
-    print(args)
+    print(details)
 
-profile("Sam","Python", "Djanog", "Docker", "Postgres")
+student("Samir", age="19", city ="kathmandu")
 
+def test(**kwargs):
+    print(kwargs)
+test(name="Gaara", age =21)
 
+def data(**kwargs):
+    for i,j in kwargs.items():
+        print(i,j)
+data(city="Kathmandu", country = "Nepal")
 
-#Task one:
-def friends(*args):
-    print(args)
-friends("Sam","Ram","Harry")
-friends("Sam","Ram","Harry","alex", "ramhari")
+#Task one  and two
+def user(**kwargs):
+    print(kwargs)
+    for i,j in kwargs.items():
+        print(i,j)
+user(name="sam", age=22, country = "Nepal")
 
-#Task Two : 
-def multiply(*numbers):
-    mul = 1
-    for i in numbers:
-        mul = mul*i
-    print(mul)
+#Task three
+def product(**details):
+    print(details)
+product(name="grapes", price=100, stock=7)
 
-multiply(2,3,4)
-
-#Task three:
-def student(name, *marks): 
+#Task four 
+def profile(name,**kwargs):
     print(name)
-    print(marks)
+    print(kwargs)
 
-student("Alex", 10,20,30,40,50)
+profile("Sam", age=21,work="backend developer")
 
-#Task 4 
-def highest(*nums):
-    return max(nums)
-print(highest(2,3,4))
+#Task five 
+def setting(**options): 
+    return len(options)
 
-#Task 5: 
-def info(valur,*data):
-    for i in data:
-        print(i,valur)
-info("$",1,2,3,4,5,)
+print(setting(name="one",name1="tow", name3="three"))
+
+#Challenge Task : 
+def game(character, **power):
+    print("character: ",character)
+    for i,j in power.items():
+        print(i,"=",j)
+game("ninja", speed=100, strenth=80, stealth=99)

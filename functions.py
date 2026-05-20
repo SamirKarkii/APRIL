@@ -420,3 +420,18 @@ def game(character, **power):
     for i,j in power.items():
         print(i,"=",j)
 game("ninja", speed=100, strenth=80, stealth=99)
+
+
+
+# What does **kwargs do?
+#keyword argument is used to handle multiple keyword argument
+# What type is kwargs?
+#dictionary
+# Difference between *args and **kwargs?
+#one is postional and one is keyword
+# Why are two stars needed?
+#if no star just a normal parmaeter, if one args, if two then kwargs
+# Can kwargs be renamed?
+#yes ofc 
+# Why use kwargs instead of fixed parameters?
+#for flexibility

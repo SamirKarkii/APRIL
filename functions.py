@@ -357,69 +357,69 @@
 # info("$",1,2,3,4,5,)
 
 
-#**kwargs 
-# **kwargs collects multiple keyword arguments into a dictionary 
+# #**kwargs 
+# # **kwargs collects multiple keyword arguments into a dictionary 
 
-def info(**kwargs): 
-    print(kwargs)  #inside a function **kwargs becomes a dictonary, key--> vlaue pairs 
+# def info(**kwargs): 
+#     print(kwargs)  #inside a function **kwargs becomes a dictonary, key--> vlaue pairs 
 
-info(name="samir", age= "19", gender= "male") 
+# info(name="samir", age= "19", gender= "male") 
 
-#loopng through, kwargs
+# #loopng through, kwargs
 
-def loopexample(**kwargs): 
-    for key,value in kwargs.items(): 
-        print(key, "=", value)
+# def loopexample(**kwargs): 
+#     for key,value in kwargs.items(): 
+#         print(key, "=", value)
 
-loopexample(name="samir", age="19", gender= "male")
+# loopexample(name="samir", age="19", gender= "male")
 
-#normal parameter +  **kwargs 
-def student(name, **details): 
-    print(name)
-    print(details)
+# #normal parameter +  **kwargs 
+# def student(name, **details): 
+#     print(name)
+#     print(details)
 
-student("Samir", age="19", city ="kathmandu")
+# student("Samir", age="19", city ="kathmandu")
 
-def test(**kwargs):
-    print(kwargs)
-test(name="Gaara", age =21)
+# def test(**kwargs):
+#     print(kwargs)
+# test(name="Gaara", age =21)
 
-def data(**kwargs):
-    for i,j in kwargs.items():
-        print(i,j)
-data(city="Kathmandu", country = "Nepal")
+# def data(**kwargs):
+#     for i,j in kwargs.items():
+#         print(i,j)
+# data(city="Kathmandu", country = "Nepal")
 
-#Task one  and two
-def user(**kwargs):
-    print(kwargs)
-    for i,j in kwargs.items():
-        print(i,j)
-user(name="sam", age=22, country = "Nepal")
+# #Task one  and two
+# def user(**kwargs):
+#     print(kwargs)
+#     for i,j in kwargs.items():
+#         print(i,j)
+# user(name="sam", age=22, country = "Nepal")
 
-#Task three
-def product(**details):
-    print(details)
-product(name="grapes", price=100, stock=7)
+# #Task three
+# def product(**details):
+#     print(details)
+# product(name="grapes", price=100, stock=7)
 
-#Task four 
-def profile(name,**kwargs):
-    print(name)
-    print(kwargs)
+# #Task four 
+# def profile(name,**kwargs):
+#     print(name)
+#     print(kwargs)
 
-profile("Sam", age=21,work="backend developer")
+# profile("Sam", age=21,work="backend developer")
 
-#Task five 
-def setting(**options): 
-    return len(options)
+# #Task five 
+# def setting(**options): 
+#     return len(options)
 
-print(setting(name="one",name1="tow", name3="three"))
+# print(setting(name="one",name1="tow", name3="three"))
 
-#Challenge Task : 
-def game(character, **power):
-    print("character: ",character)
-    for i,j in power.items():
-        print(i,"=",j)
-game("ninja", speed=100, strenth=80, stealth=99)
+# #Challenge Task : 
+# def game(character, **power):
+#     print("character: ",character)
+#     for i,j in power.items():
+#         print(i,"=",j)
+# game("ninja", speed=100, strenth=80, stealth=99)
 
 
 
@@ -435,3 +435,98 @@ game("ninja", speed=100, strenth=80, stealth=99)
 #yes ofc 
 # Why use kwargs instead of fixed parameters?
 #for flexibility
+
+
+#Multiple return values 
+#unitl now only one return value but python allows many return value together.
+#This becomes extremely useful for : calculations, APIs, game systems, data processing, machine learning 
+
+#Python function can return multiple values seperated by commas. 
+
+#Basic example; 
+def calc(a,b): 
+    return a+b, a-b
+#what actually happens , python secreately pack it into : a tuple, so this becomes rertun (a+b,a-b)
+
+
+#Receiving Multiple values 
+x,y,= calc(10,5) #number of variables should usallymatch returned values 
+print(x)
+print(y)
+
+def student():
+    return "Sam", 19, "Nepal"
+
+name, age , country = student()
+print(name)
+print(age)
+print(country)
+
+#returning tuple directly
+def data():
+    return 1,2,3
+
+x = data()
+print(x)
+
+
+#Why multiple returns are useful instead of writing multiple function , it can return everything in one function
+
+def operation(a,b):
+    return a+b,a-b,a*b,a/b
+
+add,subtract,multiply,divide = operation(10,5)
+print(add)
+print(subtract)
+print(multiply)
+print(divide)
+
+
+
+#Task one
+def math(a,b):
+    return a+b, a*b
+
+add,mul = math(3,1)
+print(add)
+print(mul)
+
+#Task two 
+def user():
+    return "Samir", 21, "NP"
+name,age,country = user()
+print(name)
+print(age)
+print(country)
+
+#Task three 
+def rectangele(length,width): 
+    return length*width, 2*(length+width)
+
+area,peremeter = rectangele(10,5)
+print(area)
+print(peremeter)
+
+#Task four 
+def marks(a,b,c):
+    return a+b+c, (a+b+c)/3
+
+total,average = marks(5,4,3)
+print(total)
+print(average)
+
+#Task five 
+ 
+
+def stats(numbers):
+    return max(numbers), min(numbers), sum(numbers)
+
+maximum, minimum, total = stats([1,3,4,5,9])
+
+
+#challenge 
+def game_stats(a,b,c,d):
+    return a,b,c,d
+
+health,aromor,coins,level = game_stats(100,50,250,7)
+print(f'Health:{health}')

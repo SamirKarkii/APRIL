@@ -443,90 +443,240 @@
 
 #Python function can return multiple values seperated by commas. 
 
-#Basic example; 
-def calc(a,b): 
-    return a+b, a-b
-#what actually happens , python secreately pack it into : a tuple, so this becomes rertun (a+b,a-b)
+# #Basic example; 
+# def calc(a,b): 
+#     return a+b, a-b
+# #what actually happens , python secreately pack it into : a tuple, so this becomes rertun (a+b,a-b)
 
 
-#Receiving Multiple values 
-x,y,= calc(10,5) #number of variables should usallymatch returned values 
-print(x)
-print(y)
+# #Receiving Multiple values 
+# x,y,= calc(10,5) #number of variables should usallymatch returned values 
+# print(x)
+# print(y)
 
-def student():
-    return "Sam", 19, "Nepal"
+# def student():
+#     return "Sam", 19, "Nepal"
 
-name, age , country = student()
-print(name)
-print(age)
-print(country)
+# name, age , country = student()
+# print(name)
+# print(age)
+# print(country)
 
-#returning tuple directly
-def data():
-    return 1,2,3
+# #returning tuple directly
+# def data():
+#     return 1,2,3
 
-x = data()
-print(x)
-
-
-#Why multiple returns are useful instead of writing multiple function , it can return everything in one function
-
-def operation(a,b):
-    return a+b,a-b,a*b,a/b
-
-add,subtract,multiply,divide = operation(10,5)
-print(add)
-print(subtract)
-print(multiply)
-print(divide)
+# x = data()
+# print(x)
 
 
+# #Why multiple returns are useful instead of writing multiple function , it can return everything in one function
 
-#Task one
-def math(a,b):
-    return a+b, a*b
+# def operation(a,b):
+#     return a+b,a-b,a*b,a/b
 
-add,mul = math(3,1)
-print(add)
-print(mul)
+# add,subtract,multiply,divide = operation(10,5)
+# print(add)
+# print(subtract)
+# print(multiply)
+# print(divide)
 
-#Task two 
-def user():
-    return "Samir", 21, "NP"
-name,age,country = user()
-print(name)
-print(age)
-print(country)
 
-#Task three 
-def rectangele(length,width): 
-    return length*width, 2*(length+width)
 
-area,peremeter = rectangele(10,5)
-print(area)
-print(peremeter)
+# #Task one
+# def math(a,b):
+#     return a+b, a*b
 
-#Task four 
-def marks(a,b,c):
-    return a+b+c, (a+b+c)/3
+# add,mul = math(3,1)
+# print(add)
+# print(mul)
 
-total,average = marks(5,4,3)
-print(total)
-print(average)
+# #Task two 
+# def user():
+#     return "Samir", 21, "NP"
+# name,age,country = user()
+# print(name)
+# print(age)
+# print(country)
 
-#Task five 
+# #Task three 
+# def rectangele(length,width): 
+#     return length*width, 2*(length+width)
+
+# area,peremeter = rectangele(10,5)
+# print(area)
+# print(peremeter)
+
+# #Task four 
+# def marks(a,b,c):
+#     return a+b+c, (a+b+c)/3
+
+# total,average = marks(5,4,3)
+# print(total)
+# print(average)
+
+# #Task five 
  
 
-def stats(numbers):
-    return max(numbers), min(numbers), sum(numbers)
+# def stats(numbers):
+#     return max(numbers), min(numbers), sum(numbers)
 
-maximum, minimum, total = stats([1,3,4,5,9])
+# maximum, minimum, total = stats([1,3,4,5,9])
 
 
-#challenge 
-def game_stats(a,b,c,d):
-    return a,b,c,d
+# #challenge 
+# def game_stats(a,b,c,d):
+#     return a,b,c,d
 
-health,aromor,coins,level = game_stats(100,50,250,7)
-print(f'Health:{health}')
+# health,aromor,coins,level = game_stats(100,50,250,7)
+# print(f'Health:{health}')
+
+
+#theory qna 
+# Can Python return multiple values?
+#yes
+# What data structure is actually returned?
+#tuple
+# Why are multiple returns useful?
+#we don't have to use multiple func, the work can be done with one
+# What happens if variables don’t match returned values?
+#error
+# What happens if single variable stores multiple returns?
+#stores tuple 
+
+
+#Nested Function
+#function inside a function 
+#basically a nested function is a function defined inside another function 4
+
+# def outer(): 
+#     def inner(): 
+#         print("Inner function ")
+#     inner()
+
+# outer()
+
+
+# def calculate(a,b): 
+#     def add(): 
+#         return a+b
+#     def multiply():
+#         return a*b
+#     print(add())
+#     print(multiply())
+
+# calculate(2,4)
+
+# #Inner function can access outer function variables.
+
+# def outer():
+#     name = "Samir"
+
+#     def innner():
+#         print(name)
+#     innner()
+
+# outer()
+
+# #Nested return example
+
+# def outer():
+#     def inner(): 
+#         return "Hello"
+#     return inner()
+# print(outer())
+
+
+# def greet(): 
+#     return "Hello"
+
+# my_variable = greet 
+# my_result = greet()
+# print(my_variable())
+# print(my_result)
+
+
+def outer_function(): 
+    print("outer")
+
+    def inner_function():
+        print("inner")
+    return inner_function
+
+outer_function()()
+
+
+
+def kitchen():
+    print("Step 1: Kitchen is open!")
+    
+    def bake_cake():
+        print("Step 2: Cake is baked! 🎂")
+        
+    return bake_cake
+
+a = kitchen()
+a()
+
+
+#Task 1 
+def school():
+    def student(): 
+        print("Student Studying")
+    student()
+
+school()
+
+#Task 2 
+def outer():
+    game = "Chess"
+    def inner():
+        print(game)
+    inner()
+outer()
+
+#Task three
+def math(a,b):
+    def add(): 
+        return a+b
+    def mul(): 
+        return a*b
+    print(add())
+    print(mul())
+
+math(4,4)
+
+#Task 4: 
+def outer(): 
+    def inner(): 
+        print("Inner function")
+    return inner()
+outer()
+
+#Task 5 
+def outer(a=2,b=9): 
+    def inner(): 
+        return a+b
+    return inner()
+
+a = outer()
+print(a)
+
+#Challenge Task : 
+
+def login_system(username): 
+    def welcome(): 
+        if username == "admin": 
+            print("Welcome admin")
+        else:
+            print("Access denied")
+    welcome()
+
+login_system("admin")
+
+
+#function inside another function is basically nested function
+#no innner function can't be accessed outside 
+#yes innerfun , can access outer variables
+#return inner means just a funct name and it need to be called later, while return inner() means actual functiion calling 
+#nested function is used to hide certain data, it is used in decorators , closures ,so on 

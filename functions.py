@@ -596,83 +596,83 @@
 # print(my_result)
 
 
-def outer_function(): 
-    print("outer")
+# def outer_function(): 
+#     print("outer")
 
-    def inner_function():
-        print("inner")
-    return inner_function
+#     def inner_function():
+#         print("inner")
+#     return inner_function
 
-outer_function()()
+# outer_function()()
 
 
 
-def kitchen():
-    print("Step 1: Kitchen is open!")
+# def kitchen():
+#     print("Step 1: Kitchen is open!")
     
-    def bake_cake():
-        print("Step 2: Cake is baked! 🎂")
+#     def bake_cake():
+#         print("Step 2: Cake is baked! 🎂")
         
-    return bake_cake
+#     return bake_cake
 
-a = kitchen()
-a()
+# a = kitchen()
+# a()
 
 
-#Task 1 
-def school():
-    def student(): 
-        print("Student Studying")
-    student()
+# #Task 1 
+# def school():
+#     def student(): 
+#         print("Student Studying")
+#     student()
 
-school()
+# school()
 
-#Task 2 
-def outer():
-    game = "Chess"
-    def inner():
-        print(game)
-    inner()
-outer()
+# #Task 2 
+# def outer():
+#     game = "Chess"
+#     def inner():
+#         print(game)
+#     inner()
+# outer()
 
-#Task three
-def math(a,b):
-    def add(): 
-        return a+b
-    def mul(): 
-        return a*b
-    print(add())
-    print(mul())
+# #Task three
+# def math(a,b):
+#     def add(): 
+#         return a+b
+#     def mul(): 
+#         return a*b
+#     print(add())
+#     print(mul())
 
-math(4,4)
+# math(4,4)
 
-#Task 4: 
-def outer(): 
-    def inner(): 
-        print("Inner function")
-    return inner()
-outer()
+# #Task 4: 
+# def outer(): 
+#     def inner(): 
+#         print("Inner function")
+#     return inner()
+# outer()
 
-#Task 5 
-def outer(a=2,b=9): 
-    def inner(): 
-        return a+b
-    return inner()
+# #Task 5 
+# def outer(a=2,b=9): 
+#     def inner(): 
+#         return a+b
+#     return inner()
 
-a = outer()
-print(a)
+# a = outer()
+# print(a)
 
-#Challenge Task : 
+# #Challenge Task : 
 
-def login_system(username): 
-    def welcome(): 
-        if username == "admin": 
-            print("Welcome admin")
-        else:
-            print("Access denied")
-    welcome()
+# def login_system(username): 
+#     def welcome(): 
+#         if username == "admin": 
+#             print("Welcome admin")
+#         else:
+#             print("Access denied")
+#     welcome()
 
-login_system("admin")
+# login_system("admin")
 
 
 #function inside another function is basically nested function
@@ -680,3 +680,127 @@ login_system("admin")
 #yes innerfun , can access outer variables
 #return inner means just a funct name and it need to be called later, while return inner() means actual functiion calling 
 #nested function is used to hide certain data, it is used in decorators , closures ,so on 
+
+
+
+#Recursion
+#Recursion is when a funcion calls itself. 
+
+def example(): 
+    print("When a function calls itself it is basically know as recursion")
+    example()
+# example()  #this weill lead to infinite loop and eventually, a recursion error , because function keeps calling itself forever, python eventually stops it
+
+
+#Every recursion function must have, a stopping condion , otherwise recursion never ends . 
+#This stopping condition is called a base case . 
+
+#Core Sturcture of Recursion : 
+#Every recursive function has two parts:
+#1) Base case: Stops recursion. 
+#2) Recursive Case: Function calls it self 
+
+def countdown(n): 
+    if n==0: 
+        print("Done")
+        return 
+    print(n)
+    countdown(n-1)
+
+countdown(5)
+
+#Important understanding, recursive calls create, new function frames, each call is seperate
+#Python remembers : current value , current position, current execution state, this uses: call stack 
+
+def factorial(n): 
+    if n==1:
+        return 1
+    
+    return n * factorial(n-1)
+
+print(factorial(5))
+
+
+def sum(n): 
+    if n==1: 
+        return 1
+    
+    return n + sum(n-1)
+
+print(sum(5))
+
+
+def repeat(text,n): 
+
+    if n==0: 
+        return 
+    print(text)
+
+    repeat(text,n-1)
+
+repeat("PYTHON", 3)
+
+
+#Task One 
+def count(n): 
+    if n==6:
+        return 
+    print(n)
+    return count(n+1)
+    
+print(count(1))
+
+
+#Task two 
+def sum_numbers(n):
+    if n==1: 
+        return 1
+    return n+sum_numbers(n-1)
+
+print(sum_numbers(5))
+
+#Task three 
+def factorial(n): 
+    if n==1: 
+        return 1 
+    return n*factorial(n-1)
+print(factorial(5))
+
+#Task four 
+def reverse_count(n): 
+    if n==0: 
+        return
+    print(n)
+
+    return reverse_count(n-1)
+
+reverse_count(5)
+
+#Task 5, left  power(base,exponent)
+
+#Challenge Task
+def login(attempts): 
+    if attempts==0:
+        print("Account Locked")
+        return
+    print(f'{attempts} attempts left')
+        
+    return login(attempts-1)  
+
+login(5)
+
+
+
+#Questions : 
+# What is recursion?
+#when a function calls itself 
+# What is base case?
+#stooping case 
+# Why is base case important?
+#to avoid infinite loop 
+# What causes RecursionError?
+#when we don't give base condition and it goes infinite and eventually crash 
+# Difference between recursive case and base case?
+#function calling itself vs stopping point
+# What happens if recursion never stops?
+#recursive error 

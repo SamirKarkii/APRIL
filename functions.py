@@ -686,108 +686,108 @@
 #Recursion
 #Recursion is when a funcion calls itself. 
 
-def example(): 
-    print("When a function calls itself it is basically know as recursion")
-    example()
-# example()  #this weill lead to infinite loop and eventually, a recursion error , because function keeps calling itself forever, python eventually stops it
+# def example(): 
+#     print("When a function calls itself it is basically know as recursion")
+#     example()
+# # example()  #this weill lead to infinite loop and eventually, a recursion error , because function keeps calling itself forever, python eventually stops it
 
 
-#Every recursion function must have, a stopping condion , otherwise recursion never ends . 
-#This stopping condition is called a base case . 
+# #Every recursion function must have, a stopping condion , otherwise recursion never ends . 
+# #This stopping condition is called a base case . 
 
-#Core Sturcture of Recursion : 
-#Every recursive function has two parts:
-#1) Base case: Stops recursion. 
-#2) Recursive Case: Function calls it self 
+# #Core Sturcture of Recursion : 
+# #Every recursive function has two parts:
+# #1) Base case: Stops recursion. 
+# #2) Recursive Case: Function calls it self 
 
-def countdown(n): 
-    if n==0: 
-        print("Done")
-        return 
-    print(n)
-    countdown(n-1)
+# def countdown(n): 
+#     if n==0: 
+#         print("Done")
+#         return 
+#     print(n)
+#     countdown(n-1)
 
-countdown(5)
+# countdown(5)
 
-#Important understanding, recursive calls create, new function frames, each call is seperate
-#Python remembers : current value , current position, current execution state, this uses: call stack 
+# #Important understanding, recursive calls create, new function frames, each call is seperate
+# #Python remembers : current value , current position, current execution state, this uses: call stack 
 
-def factorial(n): 
-    if n==1:
-        return 1
+# def factorial(n): 
+#     if n==1:
+#         return 1
     
-    return n * factorial(n-1)
+#     return n * factorial(n-1)
 
-print(factorial(5))
+# print(factorial(5))
 
 
-def sum(n): 
-    if n==1: 
-        return 1
+# def sum(n): 
+#     if n==1: 
+#         return 1
     
-    return n + sum(n-1)
+#     return n + sum(n-1)
 
-print(sum(5))
-
-
-def repeat(text,n): 
-
-    if n==0: 
-        return 
-    print(text)
-
-    repeat(text,n-1)
-
-repeat("PYTHON", 3)
+# print(sum(5))
 
 
-#Task One 
-def count(n): 
-    if n==6:
-        return 
-    print(n)
-    return count(n+1)
+# def repeat(text,n): 
+
+#     if n==0: 
+#         return 
+#     print(text)
+
+#     repeat(text,n-1)
+
+# repeat("PYTHON", 3)
+
+
+# #Task One 
+# def count(n): 
+#     if n==6:
+#         return 
+#     print(n)
+#     return count(n+1)
     
-print(count(1))
+# print(count(1))
 
 
-#Task two 
-def sum_numbers(n):
-    if n==1: 
-        return 1
-    return n+sum_numbers(n-1)
+# #Task two 
+# def sum_numbers(n):
+#     if n==1: 
+#         return 1
+#     return n+sum_numbers(n-1)
 
-print(sum_numbers(5))
+# print(sum_numbers(5))
 
-#Task three 
-def factorial(n): 
-    if n==1: 
-        return 1 
-    return n*factorial(n-1)
-print(factorial(5))
+# #Task three 
+# def factorial(n): 
+#     if n==1: 
+#         return 1 
+#     return n*factorial(n-1)
+# print(factorial(5))
 
-#Task four 
-def reverse_count(n): 
-    if n==0: 
-        return
-    print(n)
+# #Task four 
+# def reverse_count(n): 
+#     if n==0: 
+#         return
+#     print(n)
 
-    return reverse_count(n-1)
+#     return reverse_count(n-1)
 
-reverse_count(5)
+# reverse_count(5)
 
-#Task 5, left  power(base,exponent)
+# #Task 5, left  power(base,exponent)
 
-#Challenge Task
-def login(attempts): 
-    if attempts==0:
-        print("Account Locked")
-        return
-    print(f'{attempts} attempts left')
+# #Challenge Task
+# def login(attempts): 
+#     if attempts==0:
+#         print("Account Locked")
+#         return
+#     print(f'{attempts} attempts left')
         
-    return login(attempts-1)  
+#     return login(attempts-1)  
 
-login(5)
+# login(5)
 
 
 
@@ -804,3 +804,63 @@ login(5)
 #function calling itself vs stopping point
 # What happens if recursion never stops?
 #recursive error 
+
+
+#Lambda Functions in Python
+#A Lambda function is a small anonymous function defined in a single line 
+#why anonynomous , because it has no name, used for short, quick operations. 
+
+#Normal function 
+def add(a,b): 
+    return a+b
+
+#Lambda version: 
+lambda a,b : a+b
+
+#key Syntax 
+# lambda argument: expression 
+#Important rules: 
+#1) Only one expression 
+#2) no return keyword 
+#3) automatically returns result 
+
+add = lambda a,b:a+b
+print(add(2,3))
+
+square = lambda x: x*x 
+print(square(4))
+
+#Immediate execution 
+print((lambda x: x+10)(5))
+
+#Important limitation : 
+#Lambda cannot: use multiple lines, use loops, use complex logic, use multiple statemate (It is only for simple expressions.)
+
+#where lamda is actually used, it is not usually used alone , it is used inside function like: 
+
+#1)map()
+num = [1,2,3,4]
+result  = list(map(lambda x: x*2,num))
+print(result)
+
+#2) filter 
+nums = [1,2,3,4,5,6]
+even = list(filter(lambda x: x%2==0, nums))
+print(even)
+
+#Task one 
+multiply = lambda x,y : x*y
+print(multiply(2,3))
+
+#Task two 
+print((lambda x: x*x*x)(5))
+
+#Task three: 
+a = [1,2,3,4,5,6,7]
+odd = list(filter(lambda x:x%2!=0,a))
+print(odd)
+
+b = [1,2,3,4,5,10,15]
+r = list(filter(lambda x:x>=10,b))
+print(r)
+

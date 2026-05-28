@@ -810,57 +810,181 @@
 #A Lambda function is a small anonymous function defined in a single line 
 #why anonynomous , because it has no name, used for short, quick operations. 
 
-#Normal function 
+# #Normal function 
+# def add(a,b): 
+#     return a+b
+
+# #Lambda version: 
+# lambda a,b : a+b
+
+# #key Syntax 
+# # lambda argument: expression 
+# #Important rules: 
+# #1) Only one expression 
+# #2) no return keyword 
+# #3) automatically returns result 
+
+# add = lambda a,b:a+b
+# print(add(2,3))
+
+# square = lambda x: x*x 
+# print(square(4))
+
+# #Immediate execution 
+# print((lambda x: x+10)(5))
+
+# #Important limitation : 
+# #Lambda cannot: use multiple lines, use loops, use complex logic, use multiple statemate (It is only for simple expressions.)
+
+# #where lamda is actually used, it is not usually used alone , it is used inside function like: 
+
+# #1)map()
+# num = [1,2,3,4]
+# result  = list(map(lambda x: x*2,num))
+# print(result)
+
+# #2) filter 
+# nums = [1,2,3,4,5,6]
+# even = list(filter(lambda x: x%2==0, nums))
+# print(even)
+
+# #Task one 
+# multiply = lambda x,y : x*y
+# print(multiply(2,3))
+
+# #Task two 
+# print((lambda x: x*x*x)(5))
+
+# #Task three: 
+# a = [1,2,3,4,5,6,7]
+# odd = list(filter(lambda x:x%2!=0,a))
+# print(odd)
+
+# b = [1,2,3,4,5,10,15]
+# r = list(filter(lambda x:x>=10,b))
+# print(r)
+
+#First Class Function 
+#In Python, a functions are first class citizens , meaning they can be : stored in variable, passed as argruments, returned from other function just like 
+#normal values 
+
+# x = 10 
+# #but python also allows to store 
+# x = greet #store funciton 
+#that's first calls function
+
+
+#Storing Function in Variable 
+def hello(): 
+    print("This is an example of first class function ")
+x = hello  #this stores function itself not result   #x=hello(), this calls function immediately big difference 
+x()
+
+#Passing Function as Argument 
+def greet(): 
+    print("Hello Mate")
+
+def exexute(func): 
+    func()
+
+exexute(greet)
+
+
+#Returning Function 
+def outer():
+    def inner(): 
+        print("Inner")
+    return inner
+
+x = outer()
+x()
+
+#Multiple function : 
+
 def add(a,b): 
     return a+b
 
-#Lambda version: 
-lambda a,b : a+b
+def subtract(a,b): 
+    return a-b
 
-#key Syntax 
-# lambda argument: expression 
-#Important rules: 
-#1) Only one expression 
-#2) no return keyword 
-#3) automatically returns result 
+def calculate(func,x,y):
+    return func(x,y)
 
-add = lambda a,b:a+b
-print(add(2,3))
+print(calculate(add,10,5))
+print(calculate(subtract,9,9))
 
-square = lambda x: x*x 
-print(square(4))
+#first class function matter because it if foundation for decorators, callbacks ,event systems, frameworks,functional programming
 
-#Immediate execution 
-print((lambda x: x+10)(5))
+#Task one : 
+def greet():
+    print("Hello")
 
-#Important limitation : 
-#Lambda cannot: use multiple lines, use loops, use complex logic, use multiple statemate (It is only for simple expressions.)
-
-#where lamda is actually used, it is not usually used alone , it is used inside function like: 
-
-#1)map()
-num = [1,2,3,4]
-result  = list(map(lambda x: x*2,num))
-print(result)
-
-#2) filter 
-nums = [1,2,3,4,5,6]
-even = list(filter(lambda x: x%2==0, nums))
-print(even)
-
-#Task one 
-multiply = lambda x,y : x*y
-print(multiply(2,3))
+x = greet 
+x()
 
 #Task two 
-print((lambda x: x*x*x)(5))
+def shout():
+    print("whho ha ha ")
 
-#Task three: 
-a = [1,2,3,4,5,6,7]
-odd = list(filter(lambda x:x%2!=0,a))
-print(odd)
+def execute(func): 
+    return func()
+execute(shout)
 
-b = [1,2,3,4,5,10,15]
-r = list(filter(lambda x:x>=10,b))
-print(r)
+#Task three 
+def add(a,b): 
+    return a+b
 
+def calculator(func,a,b): 
+    return func(a,b)
+
+calculator(add,2,3) #we can print this too but haven't used print as of now 
+
+#Task four 
+def a(): 
+    print("A")
+    
+def b(): 
+    return a
+
+b()()
+
+#Task five : 
+
+def choose(option):
+
+    if option == "add":
+        return add
+
+    return subtract
+
+x = choose("add")
+
+print(x(2,3))
+
+
+#Challenge Task :
+def greet(): 
+    print("Hello")
+    print("Finished")
+
+
+def logger(func): 
+    print("Starting..")
+    func()
+
+logger(greet)
+
+# What are first-class functions?
+#a function which can be stored as variabled , passed as argu, and returned from another func
+# Difference between:
+# x = hello
+#just storing function
+# and
+# x = hello()
+#actually executes the function 
+# Can functions be passed as arguments?
+#yes 
+# Can functions return other functions?
+#yes
+# Why are first-class functions important?
+#without it decorators, higherorder function is not possible at all 

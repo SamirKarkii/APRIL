@@ -874,105 +874,105 @@
 #that's first calls function
 
 
-#Storing Function in Variable 
-def hello(): 
-    print("This is an example of first class function ")
-x = hello  #this stores function itself not result   #x=hello(), this calls function immediately big difference 
-x()
+# #Storing Function in Variable 
+# def hello(): 
+#     print("This is an example of first class function ")
+# x = hello  #this stores function itself not result   #x=hello(), this calls function immediately big difference 
+# x()
 
-#Passing Function as Argument 
-def greet(): 
-    print("Hello Mate")
+# #Passing Function as Argument 
+# def greet(): 
+#     print("Hello Mate")
 
-def exexute(func): 
-    func()
+# def exexute(func): 
+#     func()
 
-exexute(greet)
+# exexute(greet)
 
 
-#Returning Function 
-def outer():
-    def inner(): 
-        print("Inner")
-    return inner
+# #Returning Function 
+# def outer():
+#     def inner(): 
+#         print("Inner")
+#     return inner
 
-x = outer()
-x()
+# x = outer()
+# x()
 
-#Multiple function : 
+# #Multiple function : 
 
-def add(a,b): 
-    return a+b
+# def add(a,b): 
+#     return a+b
 
-def subtract(a,b): 
-    return a-b
+# def subtract(a,b): 
+#     return a-b
 
-def calculate(func,x,y):
-    return func(x,y)
+# def calculate(func,x,y):
+#     return func(x,y)
 
-print(calculate(add,10,5))
-print(calculate(subtract,9,9))
+# print(calculate(add,10,5))
+# print(calculate(subtract,9,9))
 
-#first class function matter because it if foundation for decorators, callbacks ,event systems, frameworks,functional programming
+# #first class function matter because it if foundation for decorators, callbacks ,event systems, frameworks,functional programming
 
-#Task one : 
-def greet():
-    print("Hello")
+# #Task one : 
+# def greet():
+#     print("Hello")
 
-x = greet 
-x()
+# x = greet 
+# x()
 
-#Task two 
-def shout():
-    print("whho ha ha ")
+# #Task two 
+# def shout():
+#     print("whho ha ha ")
 
-def execute(func): 
-    return func()
-execute(shout)
+# def execute(func): 
+#     return func()
+# execute(shout)
 
-#Task three 
-def add(a,b): 
-    return a+b
+# #Task three 
+# def add(a,b): 
+#     return a+b
 
-def calculator(func,a,b): 
-    return func(a,b)
+# def calculator(func,a,b): 
+#     return func(a,b)
 
-calculator(add,2,3) #we can print this too but haven't used print as of now 
+# calculator(add,2,3) #we can print this too but haven't used print as of now 
 
-#Task four 
-def a(): 
-    print("A")
+# #Task four 
+# def a(): 
+#     print("A")
     
-def b(): 
-    return a
+# def b(): 
+#     return a
 
-b()()
+# b()()
 
-#Task five : 
+# #Task five : 
 
-def choose(option):
+# def choose(option):
 
-    if option == "add":
-        return add
+#     if option == "add":
+#         return add
 
-    return subtract
+#     return subtract
 
-x = choose("add")
+# x = choose("add")
 
-print(x(2,3))
-
-
-#Challenge Task :
-def greet(): 
-    print("Hello")
-    print("Finished")
+# print(x(2,3))
 
 
-def logger(func): 
-    print("Starting..")
-    func()
+# #Challenge Task :
+# def greet(): 
+#     print("Hello")
+#     print("Finished")
 
-logger(greet)
+
+# def logger(func): 
+#     print("Starting..")
+#     func()
+
+# logger(greet)
 
 # What are first-class functions?
 #a function which can be stored as variabled , passed as argu, and returned from another func
@@ -988,3 +988,116 @@ logger(greet)
 #yes
 # Why are first-class functions important?
 #without it decorators, higherorder function is not possible at all 
+
+
+#Higher Order Function:
+#A higher order function is a function , that takes another function as argument or returns another function ,sometimes both
+
+def greet(): 
+    print("Hello")
+
+def runner(func):  #why higher order function because runner(), accepts function.
+    func()
+
+runner(greet)
+
+#Calculator pattern 
+#why this is powerful , instead of writing add_num(), mul_num(), one generic function can works with many operation 
+def add(a,b): 
+    return a+b
+def mul(a,b): 
+    return a*b
+
+def calculator(operation,x,y): 
+    return (operation(x,y))
+
+print(calculator(add,2,3))
+print(calculator(mul,5,6)) 
+
+#Returning Function 
+
+def choose(operation): 
+
+    def add(a,b): 
+        return a+b
+    def sub(a,b): 
+        return a-b
+    if operation == "add": 
+        return add
+    return sub
+
+x =  choose("add")
+print(x(1,4))
+
+#We have already used higher order function before as we have used map(), filter() 
+num = [1,2,3,4,5]
+result = list(map(lambda x : x*2, num))# becuae map() function takes another function lambda 
+
+
+num = [1,2,3,4,5,6,7]
+result = list(filter(lambda x: x%2==0,num)) #even here filter(), takes lambda so it HOF. 
+
+ 
+
+#Callback Concept 
+#A callback is a function passed into another function to run later. 
+def done(): 
+    print("Finished")
+
+def process(callback): 
+    print("Processing..")
+    return callback()
+
+process(done)
+
+#Task one: 
+def welcome(): 
+    print("welcome")
+
+def execute(func): 
+    return func()
+
+execute(welcome)
+
+#Task two 
+def square(n): 
+    return n*n
+
+def apply(func,value): 
+    return func(value)
+
+apply(square,5)
+
+#Task three 
+def add(a,b): 
+    return a+b
+def mul(a,b): 
+    return a+b
+
+def calcluator(func,x,y): 
+    return func(x,y)
+calcluator(add,5,6)
+
+#Task 4 
+def choose(option): 
+    def add(a,b):
+        return a+b
+    def sub(a,b): 
+        return a-b
+    
+    if option == "add": 
+        return add
+    return sub
+
+x = choose("add")
+print(x(1,2))
+
+#Task five
+def logger(func): 
+    print("Starting")
+    func()
+
+def wrapper(): 
+    print("Finished")
+
+logger(wrapper)

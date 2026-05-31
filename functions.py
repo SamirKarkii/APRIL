@@ -993,111 +993,230 @@
 #Higher Order Function:
 #A higher order function is a function , that takes another function as argument or returns another function ,sometimes both
 
-def greet(): 
-    print("Hello")
+# def greet(): 
+#     print("Hello")
 
-def runner(func):  #why higher order function because runner(), accepts function.
-    func()
+# def runner(func):  #why higher order function because runner(), accepts function.
+#     func()
 
-runner(greet)
+# runner(greet)
 
-#Calculator pattern 
-#why this is powerful , instead of writing add_num(), mul_num(), one generic function can works with many operation 
-def add(a,b): 
-    return a+b
-def mul(a,b): 
-    return a*b
+# #Calculator pattern 
+# #why this is powerful , instead of writing add_num(), mul_num(), one generic function can works with many operation 
+# def add(a,b): 
+#     return a+b
+# def mul(a,b): 
+#     return a*b
 
-def calculator(operation,x,y): 
-    return (operation(x,y))
+# def calculator(operation,x,y): 
+#     return (operation(x,y))
 
-print(calculator(add,2,3))
-print(calculator(mul,5,6)) 
+# print(calculator(add,2,3))
+# print(calculator(mul,5,6)) 
 
-#Returning Function 
+# #Returning Function 
 
-def choose(operation): 
+# def choose(operation): 
 
-    def add(a,b): 
-        return a+b
-    def sub(a,b): 
-        return a-b
-    if operation == "add": 
-        return add
-    return sub
+#     def add(a,b): 
+#         return a+b
+#     def sub(a,b): 
+#         return a-b
+#     if operation == "add": 
+#         return add
+#     return sub
 
-x =  choose("add")
-print(x(1,4))
+# x =  choose("add")
+# print(x(1,4))
 
-#We have already used higher order function before as we have used map(), filter() 
-num = [1,2,3,4,5]
-result = list(map(lambda x : x*2, num))# becuae map() function takes another function lambda 
+# #We have already used higher order function before as we have used map(), filter() 
+# num = [1,2,3,4,5]
+# result = list(map(lambda x : x*2, num))# becuae map() function takes another function lambda 
 
 
-num = [1,2,3,4,5,6,7]
-result = list(filter(lambda x: x%2==0,num)) #even here filter(), takes lambda so it HOF. 
+# num = [1,2,3,4,5,6,7]
+# result = list(filter(lambda x: x%2==0,num)) #even here filter(), takes lambda so it HOF. 
 
  
 
-#Callback Concept 
-#A callback is a function passed into another function to run later. 
-def done(): 
-    print("Finished")
+# #Callback Concept 
+# #A callback is a function passed into another function to run later. 
+# def done(): 
+#     print("Finished")
 
-def process(callback): 
-    print("Processing..")
-    return callback()
+# def process(callback): 
+#     print("Processing..")
+#     return callback()
 
-process(done)
+# process(done)
+
+# #Task one: 
+# def welcome(): 
+#     print("welcome")
+
+# def execute(func): 
+#     return func()
+
+# execute(welcome)
+
+# #Task two 
+# def square(n): 
+#     return n*n
+
+# def apply(func,value): 
+#     return func(value)
+
+# apply(square,5)
+
+# #Task three 
+# def add(a,b): 
+#     return a+b
+# def mul(a,b): 
+#     return a+b
+
+# def calcluator(func,x,y): 
+#     return func(x,y)
+# calcluator(add,5,6)
+
+# #Task 4 
+# def choose(option): 
+#     def add(a,b):
+#         return a+b
+#     def sub(a,b): 
+#         return a-b
+    
+#     if option == "add": 
+#         return add
+#     return sub
+
+# x = choose("add")
+# print(x(1,2))
+
+# #Task five
+# def logger(func): 
+#     print("Starting")
+#     func()
+
+# def wrapper(): 
+#     print("Finished")
+# logger(wrapper)
+
+
+#Decorators
+#Decorators is basically a tool that allow you to add new functionality, without changing its actual code. 
+
+#Baisc decorator
+def wrap_gift(original_func): 
+    def wrapper(): 
+        print("Putting a beautiful wrapping paper . . .")
+        original_func()
+        print("Attaching a nice bow !")
+    return wrapper 
+
+@wrap_gift
+def give_gift(): 
+    print("Here is you laptop mate! . . . ")
+give_gift()
+
+#why decorator exits: 
+#Imagive you have: "
+def login(): 
+    print("User logged in !")
+#Now we want, before every function runs, print starting 
+#We can do: 
+def login(): 
+    print("Starting...")
+    print("User logged in")
+#but for 
+def register(): 
+    print("Starting..")
+    print("User registered")
+
+def logout(): 
+    print("Starting. . .")
+    print("User logged out!")
+
+#The problem is we are repeating the same code again & again. 
+#Decorator basically solves this, instead of modifying every function, we create one wrapper 
+
+#Foundation : 
+def logger(function): #this is techincally a decorator 
+    def wrapper(): #it is a nested function
+        print("Starting")
+        function()
+        print("finished")
+    return wrapper #returns wrapper 
+
+# def greet(): 
+#     print("Hello world")
+
+# new_func = logger(greet)
+# new_func()
+
+#Python gives shortcut syntax fot this : 
+@logger
+def greet(): 
+    print("Hello world")
+greet()
+
+#What does @logger mean? 
+#python secretly does: 
+#greet = logger(greet)
+#this is the most importand decorator fact 
 
 #Task one: 
-def welcome(): 
-    print("welcome")
+def decorator(func): 
+    def wrapper(): 
+        print("Before")
+        func()
+    return wrapper
 
-def execute(func): 
-    return func()
+def greet(): 
+    print("After")
 
-execute(welcome)
+x = decorator(greet)
+x()
 
 #Task two 
-def square(n): 
-    return n*n
+def decorator(func):
+    def wrapper(): 
+        print("1.2.3 Check!")
+        func()
+    return wrapper
 
-def apply(func,value): 
-    return func(value)
+@decorator
+def greet(): 
+    print("4.5.6 Check!")
+greet()
 
-apply(square,5)
-
-#Task three 
-def add(a,b): 
-    return a+b
-def mul(a,b): 
-    return a+b
-
-def calcluator(func,x,y): 
-    return func(x,y)
-calcluator(add,5,6)
-
-#Task 4 
-def choose(option): 
-    def add(a,b):
-        return a+b
-    def sub(a,b): 
-        return a-b
-    
-    if option == "add": 
-        return add
-    return sub
-
-x = choose("add")
-print(x(1,2))
-
-#Task five
+#Task four: 
 def logger(func): 
-    print("Starting")
-    func()
+    def wrapper(): 
+        print("Starting. . . ")
+        func()
+        print("Finished , yet I didn't get question no.3 ")
+    return wrapper
 
-def wrapper(): 
-    print("Finished")
+@logger
+def confused(): 
+    print("Running function")
 
-logger(wrapper)
+confused()
+
+# #Task five: 
+# # @logger
+# # def greet():
+# =
+# greet= logger(great)
+
+
+# What is a decorator?
+# #adding new functionality to an exisiting function without chaning its actual code
+# Why do decorators exist?
+# #to reduce the repetation of same code again and again
+# What does @decorator actually do?
+# #basically it adds extra functionality to an existing func
+# Why are decorators useful in backend frameworks?
+# #for maning routes , less code more organized workflow
+# What are the three function concepts that make decorators possible?
+# #nested , retuing function, higher order function , even first 

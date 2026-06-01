@@ -1105,103 +1105,103 @@
 #Decorators
 #Decorators is basically a tool that allow you to add new functionality, without changing its actual code. 
 
-#Baisc decorator
-def wrap_gift(original_func): 
-    def wrapper(): 
-        print("Putting a beautiful wrapping paper . . .")
-        original_func()
-        print("Attaching a nice bow !")
-    return wrapper 
+# #Baisc decorator
+# def wrap_gift(original_func): 
+#     def wrapper(): 
+#         print("Putting a beautiful wrapping paper . . .")
+#         original_func()
+#         print("Attaching a nice bow !")
+#     return wrapper 
 
-@wrap_gift
-def give_gift(): 
-    print("Here is you laptop mate! . . . ")
-give_gift()
+# @wrap_gift
+# def give_gift(): 
+#     print("Here is you laptop mate! . . . ")
+# give_gift()
 
-#why decorator exits: 
-#Imagive you have: "
-def login(): 
-    print("User logged in !")
-#Now we want, before every function runs, print starting 
-#We can do: 
-def login(): 
-    print("Starting...")
-    print("User logged in")
-#but for 
-def register(): 
-    print("Starting..")
-    print("User registered")
+# #why decorator exits: 
+# #Imagive you have: "
+# def login(): 
+#     print("User logged in !")
+# #Now we want, before every function runs, print starting 
+# #We can do: 
+# def login(): 
+#     print("Starting...")
+#     print("User logged in")
+# #but for 
+# def register(): 
+#     print("Starting..")
+#     print("User registered")
 
-def logout(): 
-    print("Starting. . .")
-    print("User logged out!")
+# def logout(): 
+#     print("Starting. . .")
+#     print("User logged out!")
 
-#The problem is we are repeating the same code again & again. 
-#Decorator basically solves this, instead of modifying every function, we create one wrapper 
+# #The problem is we are repeating the same code again & again. 
+# #Decorator basically solves this, instead of modifying every function, we create one wrapper 
 
-#Foundation : 
-def logger(function): #this is techincally a decorator 
-    def wrapper(): #it is a nested function
-        print("Starting")
-        function()
-        print("finished")
-    return wrapper #returns wrapper 
+# #Foundation : 
+# def logger(function): #this is techincally a decorator 
+#     def wrapper(): #it is a nested function
+#         print("Starting")
+#         function()
+#         print("finished")
+#     return wrapper #returns wrapper 
 
+# # def greet(): 
+# #     print("Hello world")
+
+# # new_func = logger(greet)
+# # new_func()
+
+# #Python gives shortcut syntax fot this : 
+# @logger
 # def greet(): 
 #     print("Hello world")
+# greet()
 
-# new_func = logger(greet)
-# new_func()
+# #What does @logger mean? 
+# #python secretly does: 
+# #greet = logger(greet)
+# #this is the most importand decorator fact 
 
-#Python gives shortcut syntax fot this : 
-@logger
-def greet(): 
-    print("Hello world")
-greet()
+# #Task one: 
+# def decorator(func): 
+#     def wrapper(): 
+#         print("Before")
+#         func()
+#     return wrapper
 
-#What does @logger mean? 
-#python secretly does: 
-#greet = logger(greet)
-#this is the most importand decorator fact 
+# def greet(): 
+#     print("After")
 
-#Task one: 
-def decorator(func): 
-    def wrapper(): 
-        print("Before")
-        func()
-    return wrapper
+# x = decorator(greet)
+# x()
 
-def greet(): 
-    print("After")
+# #Task two 
+# def decorator(func):
+#     def wrapper(): 
+#         print("1.2.3 Check!")
+#         func()
+#     return wrapper
 
-x = decorator(greet)
-x()
+# @decorator
+# def greet(): 
+#     print("4.5.6 Check!")
+# greet()
 
-#Task two 
-def decorator(func):
-    def wrapper(): 
-        print("1.2.3 Check!")
-        func()
-    return wrapper
+# #Task four: 
+# def logger(func): 
+#     def wrapper(): 
+#         print("Starting. . . ")
+#         func()
+#         print("Finished , yet I didn't get question no.3 ")
+#     return wrapper
 
-@decorator
-def greet(): 
-    print("4.5.6 Check!")
-greet()
+# @logger
+# def confused(): 
+#     print("Running function")
 
-#Task four: 
-def logger(func): 
-    def wrapper(): 
-        print("Starting. . . ")
-        func()
-        print("Finished , yet I didn't get question no.3 ")
-    return wrapper
-
-@logger
-def confused(): 
-    print("Running function")
-
-confused()
+# confused()
 
 # #Task five: 
 # # @logger
@@ -1220,3 +1220,52 @@ confused()
 # #for maning routes , less code more organized workflow
 # What are the three function concepts that make decorators possible?
 # #nested , retuing function, higher order function , even first 
+
+
+
+#Decorator with Arguments(*args,**kwargs)
+#This is the decorator that we'll actually use in real projcts 
+
+
+def logger(func): 
+    def wrapper(*args,**kwargs): 
+        print("Start")
+        func(*args,**kwargs)
+        print("Finished")
+    return wrapper
+
+
+@logger
+def greet(name): 
+    print(name)
+
+greet("Samir")
+
+#Multiple Argumets. 
+@logger
+def add(a,b): 
+    print(a+b)
+
+add(2,3)
+
+#Key Word Argument : 
+@logger
+def profile(name, age):
+
+    print(name, age)
+
+profile(name="Sam", age=21)
+
+
+#Real Backend example : 
+def auth(func): 
+    def wrapper(*args,**kwargs): 
+        print("Checking csrf token . . .")
+        func(*args,**kwargs)
+    return wrapper
+
+@auth
+def dashboard(user): 
+    print(f'I PREFER JWT ACCESS TOKEN NOT {user}')
+
+dashboard("csrf")
